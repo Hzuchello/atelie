@@ -1,0 +1,1014 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aurélia Atelier — Lingerie de intenção</title>
+  <meta name="description" content="Atelier de lingerie contemporânea. Seda, renda arquitetônica e caimento preciso. Embalagem discreta para todo o Brasil." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ivory: #f7f1ea;
+      --paper: #fbf7f2;
+      --cream: #ece3d6;
+      --sand: #c9b8a6;
+      --blush: #c28b7a;
+      --wine: #5a2430;
+      --wine-deep: #3d1620;
+      --ink: #161210;
+      --muted: #6e645c;
+      --gold: #b8965a;
+      --line: rgba(22, 18, 16, 0.12);
+      --shadow: 0 24px 60px rgba(22, 18, 16, 0.18);
+      --radius: 2px;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: "Outfit", system-ui, sans-serif;
+      background: var(--paper);
+      color: var(--ink);
+      line-height: 1.5;
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    button, input { font-family: inherit; }
+    a { color: inherit; text-decoration: none; }
+    .serif { font-family: "Cormorant Garamond", Georgia, serif; }
+
+    .announce {
+      background: var(--ink);
+      color: var(--ivory);
+      font-size: 11px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: 10px 16px;
+    }
+    .announce span { opacity: 0.55; margin: 0 10px; }
+
+    header {
+      position: sticky; top: 0; z-index: 40;
+      display: grid;
+      grid-template-columns: 1fr auto 1fr;
+      align-items: center;
+      padding: 16px 28px;
+      background: color-mix(in srgb, var(--paper) 86%, transparent);
+      backdrop-filter: blur(18px);
+      border-bottom: 1px solid transparent;
+      transition: border-color .3s, padding .3s;
+    }
+    header.scrolled { border-bottom-color: var(--line); padding: 10px 28px; }
+    nav { display: flex; gap: 22px; font-size: 12px; letter-spacing: 0.16em; text-transform: uppercase; }
+    nav a { opacity: 0.72; }
+    nav a:hover { opacity: 1; }
+    .logo {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 28px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      text-align: center;
+    }
+    .logo small {
+      display: block;
+      font-family: "Outfit", sans-serif;
+      font-size: 9px;
+      letter-spacing: 0.42em;
+      margin-top: 2px;
+      opacity: 0.55;
+    }
+    .header-actions { display: flex; justify-content: flex-end; gap: 16px; align-items: center; }
+    .icon-btn {
+      background: none; border: 0; cursor: pointer;
+      font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase;
+      color: var(--ink); display: flex; align-items: center; gap: 6px;
+    }
+    .bag-count {
+      width: 18px; height: 18px; border-radius: 50%;
+      background: var(--wine); color: #fff; font-size: 10px;
+      display: grid; place-items: center;
+    }
+
+    .hero {
+      min-height: calc(100vh - 92px);
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      background: var(--ivory);
+    }
+    .hero-visual {
+      position: relative;
+      min-height: 72vh;
+      background:
+        linear-gradient(180deg, rgba(22,18,16,.08), rgba(22,18,16,.28)),
+        url("img/hero.jpg") center/cover no-repeat;
+    }
+    .hero-visual::after {
+      content: "Coleção Aurora · Outono 2026";
+      position: absolute; left: 28px; bottom: 28px;
+      color: #fff; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase;
+    }
+    .hero-copy {
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 64px 56px;
+    }
+    .eyebrow {
+      font-size: 11px; letter-spacing: 0.28em; text-transform: uppercase;
+      color: var(--blush); margin-bottom: 18px;
+    }
+    h1 {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 400;
+      font-size: clamp(42px, 5.4vw, 78px);
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+    }
+    h1 em { font-style: italic; color: var(--wine); }
+    .hero-copy p {
+      margin: 24px 0 36px;
+      max-width: 420px;
+      color: var(--muted);
+      font-weight: 300;
+      font-size: 16px;
+    }
+    .cta-row { display: flex; gap: 12px; flex-wrap: wrap; }
+    .btn {
+      border: 0; cursor: pointer;
+      padding: 14px 22px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      font-size: 11px;
+      transition: .25s ease;
+    }
+    .btn-primary { background: var(--ink); color: var(--ivory); }
+    .btn-primary:hover { background: var(--wine); }
+    .btn-ghost { background: transparent; border: 1px solid var(--line); }
+    .btn-ghost:hover { border-color: var(--ink); }
+
+    section { padding: 88px 28px; }
+    .wrap { max-width: 1280px; margin: 0 auto; }
+    .section-head {
+      display: flex; justify-content: space-between; align-items: end; gap: 24px;
+      margin-bottom: 36px;
+    }
+    h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-weight: 400;
+      font-size: clamp(32px, 4vw, 52px);
+      line-height: 1;
+    }
+    .section-head p { max-width: 360px; color: var(--muted); font-size: 14px; font-weight: 300; }
+
+    .collections {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      grid-template-rows: 340px 280px;
+      gap: 14px;
+    }
+    .col-card {
+      position: relative; overflow: hidden; background: #ddd; cursor: pointer;
+    }
+    .col-card img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.1s ease; }
+    .col-card:hover img { transform: scale(1.06); }
+    .col-card.wide { grid-row: 1 / span 2; }
+    .col-label {
+      position: absolute; inset: auto 18px 18px 18px; color: #fff;
+      text-shadow: 0 8px 24px rgba(0,0,0,.4);
+    }
+    .col-label small { display: block; letter-spacing: 0.2em; text-transform: uppercase; font-size: 10px; opacity: .8; }
+    .col-label strong { font-family: "Cormorant Garamond", serif; font-size: 32px; font-weight: 400; }
+
+    .toolbar {
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 16px; margin-bottom: 22px; flex-wrap: wrap;
+    }
+    .filters { display: flex; gap: 8px; flex-wrap: wrap; }
+    .chip {
+      border: 1px solid var(--line); background: transparent;
+      padding: 8px 14px; font-size: 11px; letter-spacing: 0.12em;
+      text-transform: uppercase; cursor: pointer; color: var(--muted);
+    }
+    .chip.active, .chip:hover { border-color: var(--ink); color: var(--ink); }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 18px 14px;
+    }
+    .grid .product:nth-child(1) { grid-column: span 2; }
+    .grid .product:nth-child(6) { grid-column: span 2; }
+    .product { cursor: pointer; }
+    .product-media {
+      position: relative; aspect-ratio: 3/4; overflow: hidden; background: var(--cream);
+    }
+    .product-media img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s ease, opacity .4s; }
+    .product:hover .product-media img { transform: scale(1.04); }
+    .badge {
+      position: absolute; top: 12px; left: 12px;
+      background: var(--paper); font-size: 10px; letter-spacing: 0.14em;
+      text-transform: uppercase; padding: 6px 8px;
+    }
+    .quick {
+      position: absolute; left: 12px; right: 12px; bottom: 12px;
+      background: var(--paper); border: 0; padding: 12px;
+      letter-spacing: 0.14em; text-transform: uppercase; font-size: 11px;
+      opacity: 0; transform: translateY(8px); transition: .25s;
+    }
+    .product:hover .quick { opacity: 1; transform: none; }
+    .product-meta { padding: 12px 2px 0; }
+    .product-meta h3 { font-size: 15px; font-weight: 400; }
+    .product-meta .price { font-size: 13px; color: var(--muted); margin-top: 4px; }
+    .swatches { display: flex; gap: 6px; margin-top: 8px; }
+    .swatch { width: 12px; height: 12px; border-radius: 50%; border: 1px solid rgba(0,0,0,.15); }
+
+    .fit {
+      background: var(--ivory);
+      display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center;
+    }
+    .fit-visual {
+      min-height: 460px;
+      background:
+        linear-gradient(0deg, rgba(90,36,48,.18), transparent 40%),
+        url("img/retrato.jpg") center/cover no-repeat;
+    }
+    .fit-copy h2 { margin: 10px 0 16px; }
+    .fit-copy p { color: var(--muted); max-width: 480px; font-weight: 300; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; margin: 32px 0; }
+    .stats strong { display: block; font-family: "Cormorant Garamond", serif; font-size: 32px; font-weight: 500; }
+    .stats span { font-size: 12px; color: var(--muted); letter-spacing: 0.04em; }
+
+    .atelier {
+      display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 48px; align-items: center;
+    }
+    .atelier-copy p { color: var(--muted); margin: 16px 0 28px; font-weight: 300; }
+    .materials { display: grid; gap: 14px; }
+    .mat {
+      display: grid; grid-template-columns: 72px 1fr; gap: 14px; align-items: center;
+      border-top: 1px solid var(--line); padding-top: 14px;
+    }
+    .mat img { width: 72px; height: 72px; object-fit: cover; }
+    .mat h4 { font-size: 14px; font-weight: 500; }
+    .mat p { font-size: 13px; color: var(--muted); margin: 4px 0 0; }
+
+    .promises {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 18px;
+    }
+    .promise {
+      padding: 28px 22px;
+      border: 1px solid var(--line);
+      background: #fff;
+    }
+    .promise h3 { font-family: "Cormorant Garamond", serif; font-size: 26px; font-weight: 400; margin-bottom: 8px; }
+    .promise p { color: var(--muted); font-size: 13px; font-weight: 300; }
+
+    .journal { background: var(--ink); color: var(--ivory); }
+    .journal .section-head p { color: rgba(247,241,234,.62); }
+    .posts { display: grid; grid-template-columns: 1.4fr 1fr 1fr; gap: 16px; }
+    .post { position: relative; min-height: 280px; overflow: hidden; }
+    .post img { width: 100%; height: 100%; object-fit: cover; opacity: .78; }
+    .post figcaption { position: absolute; left: 18px; right: 18px; bottom: 18px; }
+    .post small { letter-spacing: 0.18em; text-transform: uppercase; font-size: 10px; opacity: .7; }
+
+    .newsletter {
+      text-align: center; max-width: 640px; margin: 0 auto;
+    }
+    .newsletter p { color: var(--muted); margin: 14px 0 24px; }
+    form.mail { display: flex; gap: 8px; max-width: 460px; margin: 0 auto; }
+    form.mail input {
+      flex: 1; border: 1px solid var(--line); background: #fff;
+      padding: 14px 16px; outline: none;
+    }
+
+    footer {
+      border-top: 1px solid var(--line);
+      padding: 48px 28px 28px;
+    }
+    .foot-grid {
+      max-width: 1280px; margin: 0 auto 32px;
+      display: grid; grid-template-columns: 1.4fr 1fr 1fr 1fr; gap: 28px;
+    }
+    footer h4 { font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; margin-bottom: 14px; }
+    footer a, footer p { display: block; color: var(--muted); font-size: 14px; margin: 6px 0; font-weight: 300; }
+    .legal {
+      max-width: 1280px; margin: 0 auto;
+      display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+      border-top: 1px solid var(--line); padding-top: 18px;
+      font-size: 12px; color: var(--muted);
+    }
+
+    .drawer, .modal, .quiz {
+      position: fixed; inset: 0; z-index: 60; display: none;
+    }
+    .drawer.open, .modal.open, .quiz.open { display: block; }
+    .backdrop { position: absolute; inset: 0; background: rgba(22,18,16,.42); }
+    .panel {
+      position: absolute; top: 0; right: 0; height: 100%; width: min(420px, 100%);
+      background: var(--paper); padding: 24px; overflow: auto;
+      box-shadow: var(--shadow);
+    }
+    .panel-head, .modal-head {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 22px;
+    }
+    .close { background: none; border: 0; font-size: 22px; cursor: pointer; }
+    .cart-item { display: grid; grid-template-columns: 78px 1fr auto; gap: 12px; padding: 14px 0; border-bottom: 1px solid var(--line); }
+    .cart-item img { width: 78px; height: 96px; object-fit: cover; }
+    .cart-total { display: flex; justify-content: space-between; margin: 18px 0; font-size: 16px; }
+    .empty { color: var(--muted); padding: 40px 0; text-align: center; }
+
+    .modal-card {
+      position: absolute; inset: 4vh auto auto 50%;
+      transform: translateX(-50%);
+      width: min(980px, 94vw);
+      max-height: 92vh; overflow: auto;
+      background: var(--paper);
+      display: grid; grid-template-columns: 1fr 1fr;
+    }
+    .modal-card img { width: 100%; height: 100%; min-height: 420px; object-fit: cover; }
+    .modal-info { padding: 36px; }
+    .modal-info h3 { font-family: "Cormorant Garamond", serif; font-size: 40px; font-weight: 400; }
+    .modal-info .price { margin: 8px 0 18px; color: var(--muted); }
+    .sizes { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 20px; }
+    .size {
+      min-width: 44px; height: 40px; padding: 0 10px;
+      border: 1px solid var(--line); background: #fff; cursor: pointer;
+    }
+    .size.picked { background: var(--ink); color: #fff; border-color: var(--ink); }
+    .details { margin-top: 22px; color: var(--muted); font-size: 14px; font-weight: 300; }
+    .details summary { cursor: pointer; color: var(--ink); margin: 10px 0; font-size: 13px; letter-spacing: 0.08em; text-transform: uppercase; }
+
+    .quiz-card {
+      position: absolute; inset: 8vh auto auto 50%;
+      transform: translateX(-50%);
+      width: min(560px, 92vw);
+      background: var(--paper); padding: 36px;
+    }
+    .quiz-step p { color: var(--muted); margin: 8px 0 20px; }
+    .opts { display: grid; gap: 8px; }
+    .opt {
+      text-align: left; padding: 14px 16px; background: #fff;
+      border: 1px solid var(--line); cursor: pointer;
+    }
+    .opt:hover { border-color: var(--ink); }
+    .progress { height: 2px; background: var(--cream); margin: 0 0 22px; }
+    .progress i { display: block; height: 100%; background: var(--wine); width: 33%; }
+
+    .toast {
+      position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%) translateY(20px);
+      background: var(--ink); color: var(--ivory);
+      padding: 12px 18px; font-size: 13px; opacity: 0; pointer-events: none;
+      transition: .3s; z-index: 80;
+    }
+    .toast.show { opacity: 1; transform: translateX(-50%); }
+
+    @media (max-width: 980px) {
+      header { grid-template-columns: auto 1fr auto; padding: 12px 16px; }
+      nav { display: none; }
+      .hero, .fit, .atelier, .modal-card, .posts, .promises, .foot-grid { grid-template-columns: 1fr; }
+      .hero-copy { padding: 40px 22px 56px; }
+      .collections { grid-template-columns: 1fr; grid-template-rows: none; }
+      .col-card, .col-card.wide { min-height: 280px; grid-row: auto; }
+      .grid { grid-template-columns: 1fr 1fr; }
+      .grid .product:nth-child(1),
+      .grid .product:nth-child(6) { grid-column: span 1; }
+      .quick { opacity: 1; transform: none; }
+      section { padding: 64px 16px; }
+    }
+
+    img[src] { background: var(--cream); }
+    .ojas-launcher {
+      position: fixed; right: 22px; bottom: 22px; z-index: 70;
+      width: 48px; height: 48px; border-radius: 50%;
+      border: 1px solid rgba(247,241,234,.18);
+      background: var(--wine-deep);
+      color: var(--ivory);
+      cursor: pointer;
+      display: grid; place-items: center;
+      box-shadow: 0 10px 30px rgba(61,22,32,.28);
+      transition: transform .2s, background .2s;
+    }
+    .ojas-launcher:hover { transform: translateY(-2px); background: var(--wine); }
+    .ojas-launcher svg { width: 18px; height: 18px; }
+    .ojas-dot {
+      position: absolute; top: 6px; right: 6px;
+      width: 7px; height: 7px; border-radius: 50%;
+      background: #d4b37a; border: 1.5px solid var(--wine-deep);
+    }
+    .ojas-panel {
+      position: fixed; right: 22px; bottom: 80px; z-index: 70;
+      width: min(360px, calc(100vw - 28px));
+      height: min(520px, calc(100vh - 120px));
+      background: var(--paper);
+      border: 1px solid var(--line);
+      box-shadow: var(--shadow);
+      display: none; flex-direction: column;
+      overflow: hidden;
+    }
+    .ojas-panel.open { display: flex; }
+    .ojas-head {
+      background: var(--ink); color: var(--ivory);
+      padding: 16px 16px 14px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .ojas-head strong {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 22px; font-weight: 500; letter-spacing: .04em;
+      display: block;
+    }
+    .ojas-head span { font-size: 11px; letter-spacing: .16em; text-transform: uppercase; opacity: .55; }
+    .ojas-close {
+      background: none; border: 0; color: var(--ivory);
+      font-size: 22px; cursor: pointer; line-height: 1;
+    }
+    .ojas-thread {
+      flex: 1; overflow: auto; padding: 16px;
+      display: flex; flex-direction: column; gap: 10px;
+      background: #f4eee6;
+    }
+    .ojas-msg {
+      max-width: 88%; padding: 10px 12px;
+      font-size: 13.5px; line-height: 1.45; font-weight: 300;
+    }
+    .ojas-msg.bot { background: #fff; align-self: flex-start; border: 1px solid var(--line); }
+    .ojas-msg.me { background: var(--ink); color: var(--ivory); align-self: flex-end; }
+    .ojas-msg a { text-decoration: underline; }
+    .ojas-quick { display: flex; flex-wrap: wrap; gap: 6px; padding: 10px 12px; background: var(--paper); border-top: 1px solid var(--line); }
+    .ojas-quick button {
+      border: 1px solid var(--line); background: #fff;
+      font-size: 11px; letter-spacing: .06em;
+      padding: 7px 10px; cursor: pointer; color: var(--ink);
+    }
+    .ojas-quick button:hover { border-color: var(--ink); }
+    .ojas-form { display: flex; gap: 8px; padding: 10px 12px 12px; background: var(--paper); border-top: 1px solid var(--line); }
+    .ojas-form input {
+      flex: 1; border: 1px solid var(--line); background: #fff;
+      padding: 10px 12px; outline: none; font-size: 13px;
+    }
+    .ojas-form button {
+      border: 0; background: var(--ink); color: var(--ivory);
+      padding: 0 14px; letter-spacing: .12em; text-transform: uppercase;
+      font-size: 10px; cursor: pointer;
+    }
+    @media (max-width: 640px) {
+      .ojas-launcher { right: 14px; bottom: 14px; }
+      .ojas-panel { right: 10px; bottom: 70px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; scroll-behavior: auto !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="announce">Frete grátis acima de R$ 490 <span>·</span> Embalagem discreta sem identificação da marca <span>·</span> Troca em 30 dias</div>
+
+  <header id="header">
+    <nav>
+      <a href="#colecoes">Coleções</a>
+      <a href="#loja">Loja</a>
+      <a href="#caimento">Caimento</a>
+      <a href="#atelier">Atelier</a>
+    </nav>
+    <a class="logo" href="#">Aurélia<small>Atelier íntimo</small></a>
+    <div class="header-actions">
+      <button class="icon-btn" onclick="openQuiz()">Medidas</button>
+      <button class="icon-btn" onclick="openCart()">Sacola <span class="bag-count" id="bagCount">0</span></button>
+    </div>
+  </header>
+
+  <section class="hero" style="padding:0">
+    <div class="hero-visual" role="img" aria-label="Campanha editorial da coleção Aurora"></div>
+    <div class="hero-copy">
+      <div class="eyebrow">Outono 2026 · Edição limitada</div>
+      <h1>Lingerie que se <em>veste</em><br>como intenção.</h1>
+      <p>Peças pensadas para o corpo real: renda estruturada, seda fluida e silhuetas que transitam do íntimo ao visível. Um atelier curitibano, com o rigor de uma maison.</p>
+      <div class="cta-row">
+        <a class="btn btn-primary" href="#loja">Explorar a coleção</a>
+        <button class="btn btn-ghost" onclick="openQuiz()">Encontrar meu caimento</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="colecoes">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Quatro linguagens.</h2>
+        <p>Do segundo-pele ao statement. A lingerie contemporânea não se esconde — ela escolhe quando aparecer.</p>
+      </div>
+      <div class="collections">
+        <article class="col-card wide" onclick="filterProducts('seda')">
+          <img src="img/seda-nua.jpg" alt="Coleção Seda Nua" />
+          <div class="col-label"><small>Quotidiano elevado</small><strong>Seda Nua</strong></div>
+        </article>
+        <article class="col-card" onclick="filterProducts('renda')">
+          <img src="img/renda.jpg" alt="Coleção Renda Arquitetônica" />
+          <div class="col-label"><small>Estrutura e sombra</small><strong>Renda</strong></div>
+        </article>
+        <article class="col-card" onclick="filterProducts('noite')">
+          <img src="img/noite.jpg" alt="Coleção Noite" />
+          <div class="col-label"><small>Para ser vista</small><strong>Noite</strong></div>
+        </article>
+        <article class="col-card" onclick="filterProducts('pele')">
+          <img src="img/segunda-pele.jpg" alt="Coleção Segunda Pele" />
+          <div class="col-label"><small>Conforto técnico</small><strong>Segunda Pele</strong></div>
+        </article>
+        <article class="col-card" onclick="filterProducts('nupcias')">
+          <img src="img/nupcias.jpg" alt="Coleção Núpcias" />
+          <div class="col-label"><small>Marfim e pérola</small><strong>Núpcias</strong></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="loja" style="padding-top:24px">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Peças em evidência.</h2>
+        <p>Grid editorial, não catálogo. Cada peça com nota de construção — o que justifica o preço antes da descrição.</p>
+      </div>
+      <div class="toolbar">
+        <div class="filters" id="filters">
+          <button class="chip active" data-f="all">Tudo</button>
+          <button class="chip" data-f="seda">Seda</button>
+          <button class="chip" data-f="renda">Renda</button>
+          <button class="chip" data-f="pele">Segunda pele</button>
+          <button class="chip" data-f="noite">Noite</button>
+          <button class="chip" data-f="nupcias">Núpcias</button>
+        </div>
+        <span style="font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)">PP–GGG · 32–46 · A–G</span>
+      </div>
+      <div class="grid" id="grid"></div>
+    </div>
+  </section>
+
+  <section class="fit" id="caimento">
+    <div class="fit-visual" role="img" aria-label="Retrato de campanha"></div>
+    <div class="fit-copy wrap" style="padding:48px 40px">
+      <div class="eyebrow">O maior motivo de devolução no segmento</div>
+      <h2>Caimento sem exposição.</h2>
+      <p>Em lingerie, 2 mm na cinta mudam tudo. Em vez de foto do corpo, usamos um quiz de lógica — medidas, preferência de suporte e ocasião. Privacidade primeiro.</p>
+      <div class="stats">
+        <div><strong>−34%</strong><span>devoluções com guia ativo*</span></div>
+        <div><strong>32–46</strong><span>cintas disponíveis</span></div>
+        <div><strong>A–G</strong><span>arcos e sem aro</span></div>
+      </div>
+      <div class="cta-row">
+        <button class="btn btn-primary" onclick="openQuiz()">Começar o quiz de medidas</button>
+        <a class="btn btn-ghost" href="#loja">Ver guia rápido</a>
+      </div>
+      <p style="margin-top:16px;font-size:12px">*Benchmark de mercado em canais digitais de intimates com recomendação de caimento (2025–26).</p>
+    </div>
+  </section>
+
+  <section id="atelier">
+    <div class="wrap atelier">
+      <div class="atelier-copy">
+        <div class="eyebrow">Feito para ser sentido</div>
+        <h2>Matéria, não marketing.</h2>
+        <p>As marcas que justificam preço premium não falam de “luxo”. Mostram a renda de perto, nomeiam o fio e explicam a construção. Aurélia faz o mesmo.</p>
+        <div class="materials">
+          <div class="mat">
+            <img src="img/tecido.jpg" alt="Seda" />
+            <div>
+              <h4>Seda mulberry 19 momme</h4>
+              <p>Queda líquida, temperatura da pele. Lavagem delicada, vive anos se cuidada.</p>
+            </div>
+          </div>
+          <div class="mat">
+            <img src="img/renda-detalhe.jpg" alt="Renda" />
+            <div>
+              <h4>Renda tipo Chantilly</h4>
+              <p>Desenho floral aberto, recortes estratégicos. Não é aplique: é estrutura.</p>
+            </div>
+          </div>
+          <div class="mat">
+            <img src="img/tecido.jpg" alt="Malha" />
+            <div>
+              <h4>Malha sem costura</h4>
+              <p>Segunda pele para o dia. Compressão suave, sem marcas sob a roupa.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="fit-visual" style="min-height:520px;background:url('img/atelier.jpg') center/cover no-repeat"></div>
+    </div>
+  </section>
+
+  <section style="padding-top:0">
+    <div class="wrap">
+      <div class="promises">
+        <article class="promise">
+          <h3>Embalagem discreta</h3>
+          <p>Caixa neutra, descritor de fatura genérico. Ninguém precisa saber o que chegou.</p>
+        </article>
+        <article class="promise">
+          <h3>Troca inteligente</h3>
+          <p>30 dias. Se o caimento falhar, a segunda via sai com prioridade.</p>
+        </article>
+        <article class="promise">
+          <h3>Inclusão real</h3>
+          <p>Grade ampla não é banner. Filtro por copa e cinta que de fato funciona.</p>
+        </article>
+        <article class="promise">
+          <h3>Origem próxima</h3>
+          <p>Atelier e revisão em Curitiba. Menos desperdício, mais controle de qualidade.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="journal" id="diario">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Diário do atelier.</h2>
+        <p>Lingerie como roupa. Como escolher renda para usar à mostra, e por que o slip voltou.</p>
+      </div>
+      <div class="posts">
+        <figure class="post">
+          <img src="img/jornal1.jpg" alt="" />
+          <figcaption><small>Ensaio · 08 min</small><h3 class="serif" style="font-size:28px;font-weight:400">Underwear as outerwear, sem clichê</h3></figcaption>
+        </figure>
+        <figure class="post">
+          <img src="img/noite.jpg" alt="" />
+          <figcaption><small>Matéria</small><h3 class="serif" style="font-size:24px;font-weight:400">Como medir a cinta em casa</h3></figcaption>
+        </figure>
+        <figure class="post">
+          <img src="img/seda-nua.jpg" alt="" />
+          <figcaption><small>Bastidores</small><h3 class="serif" style="font-size:24px;font-weight:400">A seda que escolhemos neste outono</h3></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="newsletter">
+      <div class="eyebrow">Lista privada</div>
+      <h2>Pré-venda e edições curtas.</h2>
+      <p>Sem spam. Um e-mail quando uma peça limitada entra em estoque — e o guia de caimento em PDF.</p>
+      <form class="mail" onsubmit="subscribe(event)">
+        <input type="email" required placeholder="Seu e-mail" aria-label="E-mail" />
+        <button class="btn btn-primary" type="submit">Entrar</button>
+      </form>
+    </div>
+  </section>
+
+  <footer>
+    <div class="foot-grid">
+      <div>
+        <a class="logo" href="#">Aurélia</a>
+        <p>Atelier íntimo em Curitiba. Peças para o corpo que você tem hoje — não o que uma tabela inventou.</p>
+      </div>
+      <div>
+        <h4>Loja</h4>
+        <a href="#loja">Novidades</a>
+        <a href="#colecoes">Coleções</a>
+        <a href="#caimento">Guia de medidas</a>
+        <a href="#">Presentes</a>
+      </div>
+      <div>
+        <h4>Serviço</h4>
+        <a href="#">Envio e rastreio</a>
+        <a href="#">Trocas</a>
+        <a href="#">Embalagem discreta</a>
+        <a href="#">Atendimento no WhatsApp</a>
+      </div>
+      <div>
+        <h4>Casa</h4>
+        <a href="#">O atelier</a>
+        <a href="#diario">Diário</a>
+        <a href="#">Sustentabilidade</a>
+        <a href="#">Imprensa</a>
+      </div>
+    </div>
+    <div class="legal">
+      <span>© 2026 Aurélia Atelier · Protótipo de vitrine</span>
+      <span>Pix · Cartão · 3x sem juros · Envio para todo o Brasil</span>
+    </div>
+  </footer>
+
+  <aside class="drawer" id="cart">
+    <div class="backdrop" onclick="closeCart()"></div>
+    <div class="panel">
+      <div class="panel-head">
+        <h2 style="font-size:32px">Sacola</h2>
+        <button class="close" onclick="closeCart()" aria-label="Fechar">×</button>
+      </div>
+      <div id="cartItems"></div>
+      <div class="cart-total"><span>Subtotal</span><strong id="subtotal">R$ 0</strong></div>
+      <label style="display:flex;gap:8px;align-items:center;font-size:13px;margin-bottom:16px;color:var(--muted)">
+        <input type="checkbox" checked /> Embalagem discreta (padrão)
+      </label>
+      <button class="btn btn-primary" style="width:100%" onclick="checkout()">Finalizar · checkout em 1 etapa</button>
+      <p style="font-size:12px;color:var(--muted);margin-top:12px">Protótipo: o checkout é simulado. Em produção: Pix, cartão, guest checkout e descritor neutro na fatura.</p>
+    </div>
+  </aside>
+
+  <div class="modal" id="pdp">
+    <div class="backdrop" onclick="closePdp()"></div>
+    <div class="modal-card" id="pdpCard"></div>
+  </div>
+
+  <div class="quiz" id="quiz">
+    <div class="backdrop" onclick="closeQuiz()"></div>
+    <div class="quiz-card">
+      <div class="panel-head">
+        <h2 style="font-size:32px">Caimento</h2>
+        <button class="close" onclick="closeQuiz()" aria-label="Fechar">×</button>
+      </div>
+      <div class="progress"><i id="qbar"></i></div>
+      <div id="quizBody"></div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <button class="ojas-launcher" id="ojasBtn" aria-label="Abrir Ôjas Bot" title="Ôjas Bot">
+    <span class="ojas-dot" aria-hidden="true"></span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
+      <path d="M5 7.5C5 5.6 7.7 4 11.2 4h1.6C16.3 4 19 5.6 19 7.5v5c0 1.9-2.7 3.5-6.2 3.5h-.6L8 19v-3.2C6.2 15 5 13.4 5 11.6V7.5z"/>
+    </svg>
+  </button>
+  <aside class="ojas-panel" id="ojasPanel" role="dialog" aria-label="Ôjas Bot">
+    <div class="ojas-head">
+      <div>
+        <strong>Ôjas Bot</strong>
+        <span>Atelier · online agora</span>
+      </div>
+      <button class="ojas-close" id="ojasClose" aria-label="Fechar">×</button>
+    </div>
+    <div class="ojas-thread" id="ojasThread"></div>
+    <div class="ojas-quick" id="ojasQuick"></div>
+    <form class="ojas-form" id="ojasForm">
+      <input id="ojasInput" autocomplete="off" placeholder="Escreva sua dúvida…" aria-label="Mensagem" />
+      <button type="submit">Enviar</button>
+    </form>
+  </aside>
+
+
+  <script>
+    const products = [
+      { id:1, name:"Sutiã Aurora", price:328, cat:"renda", badge:"Edição", color:"#5a2430",
+        img:"img/prod-renda-preta.jpg",
+        desc:"Renda Chantilly com recorte em V e aro flexível. Pensado para aparecer sob um blazer aberto.",
+        build:"Aro encapsulado · forro de tule · alças reguláveis 16 mm · gancho triplo" },
+      { id:2, name:"Slip Íris", price:218, cat:"seda", badge:"Mais pedido", color:"#c28b7a",
+        img:"img/prod-slip.jpg",
+        desc:"Seda 19 momme, viés de cetim, comprimento midi. Transita de quarto a jantar.",
+        build:"Seda mulberry · costura francesa · forro no busto" },
+      { id:3, name:"Conjunto Névoa", price:396, cat:"pele", color:"#c9b8a6",
+        img:"img/prod-pele.jpg",
+        desc:"Segunda pele sem costura. Compressão suave, zero marca sob camisa branca.",
+        build:"Microfibra reciclada · sem aro · elástico embutido" },
+      { id:4, name:"Body Nocturne", price:478, cat:"noite", badge:"Statement", color:"#161210",
+        img:"img/noite.jpg",
+        desc:"Body de renda e recortes. Feito para ser o look — não a camada de baixo.",
+        build:"Renda + tule · fecho inferior · alças removíveis" },
+      { id:5, name:"Sutiã Segunda Pele", price:248, cat:"pele", color:"#ece3d6",
+        img:"img/prod-pele.jpg",
+        desc:"Sem aro, copa moldada. O ‘quase sem sutiã’ com suporte real.",
+        build:"Malha circular · copas moldadas · costas nadador" },
+      { id:6, name:"Conjunto Marfim", price:520, cat:"nupcias", badge:"Núpcias", color:"#f7f1ea",
+        img:"img/prod-marfim.jpg",
+        desc:"Renda off-white com pérolas discretas. Feito para o início de algo.",
+        build:"Renda floral · aplicações de pérola · tule ilusão" },
+      { id:7, name:"Robe Lúmen", price:590, cat:"seda", color:"#c28b7a",
+        img:"img/prod-robe.jpg",
+        desc:"Robe longo de seda, manga quimono. A peça que a casa pede de manhã.",
+        build:"Seda 19 mm · faixa interna + externa · bolsos invisíveis" },
+      { id:8, name:"Cinturinha Éter", price:268, cat:"noite", color:"#5a2430",
+        img:"img/prod-cintura.jpg",
+        desc:"Waspie contemporâneo: estrutura sem teatro. Usa-se sobre camisa ou pele.",
+        build:"Barbatanas flexíveis · acetinado · fecho gancho" }
+    ];
+
+    const sizes = ["PP","P","M","G","GG","GGG"];
+    let cart = JSON.parse(localStorage.getItem("aurelia-cart") || "[]");
+    let currentFilter = "all";
+    let quizStep = 0;
+    let quiz = {};
+
+    const money = n => n.toLocaleString("pt-BR", { style:"currency", currency:"BRL" });
+
+    function renderGrid() {
+      const list = products.filter(p => currentFilter === "all" || p.cat === currentFilter);
+      document.getElementById("grid").innerHTML = list.map(p => `
+        <article class="product" onclick="openPdp(${p.id})">
+          <div class="product-media">
+            ${p.badge ? `<span class="badge">${p.badge}</span>` : ""}
+            <img src="${p.img}" alt="${p.name}" />
+            <button class="quick" onclick="event.stopPropagation(); addToCart(${p.id}, 'M')">Adicionar · ${money(p.price)}</button>
+          </div>
+          <div class="product-meta">
+            <h3>${p.name}</h3>
+            <div class="price">${money(p.price)}</div>
+            <div class="swatches"><i class="swatch" style="background:${p.color}"></i></div>
+          </div>
+        </article>
+      `).join("");
+    }
+
+    function filterProducts(key) {
+      currentFilter = key;
+      document.querySelectorAll(".chip").forEach(c => c.classList.toggle("active", c.dataset.f === key));
+      renderGrid();
+      document.getElementById("loja").scrollIntoView({ behavior:"smooth" });
+    }
+
+    document.getElementById("filters").addEventListener("click", e => {
+      if (e.target.dataset.f) filterProducts(e.target.dataset.f);
+    });
+
+    function openPdp(id) {
+      const p = products.find(x => x.id === id);
+      document.getElementById("pdpCard").innerHTML = `
+        <img src="${p.img}" alt="${p.name}" />
+        <div class="modal-info">
+          <div class="modal-head"><div class="eyebrow">${p.cat}</div><button class="close" onclick="closePdp()">×</button></div>
+          <h3>${p.name}</h3>
+          <div class="price">${money(p.price)}</div>
+          <p style="font-weight:300;color:var(--muted)">${p.desc}</p>
+          <p style="margin-top:16px;font-size:12px;letter-spacing:.12em;text-transform:uppercase">Tamanho</p>
+          <div class="sizes" id="sizeRow">
+            ${sizes.map((s,i)=>`<button class="size ${i===2?'picked':''}" onclick="pickSize(this)">${s}</button>`).join("")}
+          </div>
+          <button class="btn btn-primary" style="width:100%" onclick="addFromPdp(${p.id})">Adicionar à sacola</button>
+          <div class="details">
+            <details open><summary>Construção</summary><p>${p.build}</p></details>
+            <details><summary>Caimento</summary><p>Modelagem verdadeira. Se você está entre dois tamanhos de cinta, escolha o maior e use o gancho no primeiro ajuste.</p></details>
+            <details><summary>Envio e discrição</summary><p>Sai de Curitiba em até 2 dias úteis. Caixa sem logotipo. Fatura com descritor “atelier têxtil”.</p></details>
+          </div>
+        </div>`;
+      document.getElementById("pdp").classList.add("open");
+    }
+    function pickSize(el) {
+      document.querySelectorAll(".size").forEach(s => s.classList.remove("picked"));
+      el.classList.add("picked");
+    }
+    function addFromPdp(id) {
+      const size = document.querySelector(".size.picked")?.textContent || "M";
+      addToCart(id, size);
+      closePdp();
+    }
+    function closePdp() { document.getElementById("pdp").classList.remove("open"); }
+
+    function addToCart(id, size) {
+      const p = products.find(x => x.id === id);
+      const found = cart.find(i => i.id === id && i.size === size);
+      if (found) found.qty += 1;
+      else cart.push({ id, size, qty: 1, name: p.name, price: p.price, img: p.img });
+      persist();
+      toast(`${p.name} · ${size} na sacola`);
+    }
+    function removeItem(i) { cart.splice(i,1); persist(); }
+    function persist() {
+      localStorage.setItem("aurelia-cart", JSON.stringify(cart));
+      document.getElementById("bagCount").textContent = cart.reduce((a,b)=>a+b.qty,0);
+      renderCart();
+    }
+    function renderCart() {
+      const box = document.getElementById("cartItems");
+      if (!cart.length) { box.innerHTML = `<p class="empty">Sua sacola está em silêncio.</p>`; }
+      else {
+        box.innerHTML = cart.map((i,idx)=>`
+          <div class="cart-item">
+            <img src="${i.img}" alt="" />
+            <div>
+              <strong>${i.name}</strong>
+              <div style="font-size:12px;color:var(--muted)">${i.size} · ${i.qty}x</div>
+              <button class="icon-btn" style="margin-top:6px;padding:0" onclick="removeItem(${idx})">Retirar</button>
+            </div>
+            <div>${money(i.price * i.qty)}</div>
+          </div>`).join("");
+      }
+      document.getElementById("subtotal").textContent = money(cart.reduce((a,b)=>a+b.price*b.qty,0));
+    }
+    function openCart() { document.getElementById("cart").classList.add("open"); }
+    function closeCart() { document.getElementById("cart").classList.remove("open"); }
+    function checkout() {
+      toast(cart.length ? "Checkout simulado · pedido registrado no protótipo" : "Adicione uma peça primeiro");
+      if (cart.length) { cart = []; persist(); closeCart(); }
+    }
+
+    const questions = [
+      { k:"banda", t:"Qual é a sua cinta atual — ou a medida sob o busto?",
+        o:["32–34 / 70–75 cm","36–38 / 80–85 cm","40–42 / 90–95 cm","44–46 / 100–110 cm"] },
+      { k:"copa", t:"Como o sutiã se comporta no final do dia?",
+        o:["Vaza ou marca a copa — preciso de mais volume","Fica bom o dia inteiro","Sobra tecido na copa","Prefiro sem aro, suporte suave"] },
+      { k:"uso", t:"O que você busca agora?",
+        o:["Invisível sob a roupa","Renda à mostra, lingerie como look","Seda para casa e noite","Peça nupcial / presente"] }
+    ];
+    function openQuiz() { quizStep = 0; quiz = {}; drawQuiz(); document.getElementById("quiz").classList.add("open"); }
+    function closeQuiz() { document.getElementById("quiz").classList.remove("open"); }
+    function drawQuiz() {
+      document.getElementById("qbar").style.width = ((quizStep)/questions.length*100) + "%";
+      if (quizStep >= questions.length) {
+        const map = { renda:"Renda Arquitetônica", pele:"Segunda Pele", seda:"Seda Nua", nupcias:"Núpcias", noite:"Noite" };
+        const rec = quiz.uso?.includes("Invisível") ? "pele"
+          : quiz.uso?.includes("Renda") ? "renda"
+          : quiz.uso?.includes("nupcial") ? "nupcias" : "seda";
+        document.getElementById("quizBody").innerHTML = `
+          <h3 class="serif" style="font-size:34px">Sua leitura.</h3>
+          <p>Cinta sugerida a partir da faixa ${quiz.banda}. Coleção que casa com o uso: <strong>${map[rec]}</strong>.</p>
+          <button class="btn btn-primary" onclick="closeQuiz(); filterProducts('${rec}')">Ver peças recomendadas</button>`;
+        document.getElementById("qbar").style.width = "100%";
+        return;
+      }
+      const q = questions[quizStep];
+      document.getElementById("quizBody").innerHTML = `
+        <div class="quiz-step">
+          <div class="eyebrow">Passo ${quizStep+1} de ${questions.length}</div>
+          <h3 class="serif" style="font-size:28px">${q.t}</h3>
+          <p>Sem foto. Sem upload. Só lógica de caimento.</p>
+          <div class="opts">
+            ${q.o.map(opt=>`<button class="opt" onclick="answer('${q.k}', \`${opt}\`)">${opt}</button>`).join("")}
+          </div>
+        </div>`;
+    }
+    function answer(k, v) { quiz[k] = v; quizStep++; drawQuiz(); }
+
+    function subscribe(e) {
+      e.preventDefault();
+      toast("Você entrou na lista privada.");
+      e.target.reset();
+    }
+    function toast(msg) {
+      const t = document.getElementById("toast");
+      t.textContent = msg; t.classList.add("show");
+      setTimeout(()=>t.classList.remove("show"), 2400);
+    }
+
+    window.addEventListener("scroll", () => {
+      document.getElementById("header").classList.toggle("scrolled", scrollY > 8);
+    });
+
+    const ojasKb = [
+      { k: ["medida","tamanho","caimento","copa","cinta","pp","ggg"], a: "O caimento é o nosso assunto principal. Use o quiz em Medidas no topo — sem foto, só lógica de cinta e copa. Grade 32–46 / A–G, PP a GGG. Entre dois tamanhos de cinta, fique com o maior." },
+      { k: ["frete","envio","prazo","entrega"], a: "Saímos de Curitiba em até 2 dias úteis. Frete grátis acima de R$ 490. Rastreio vai por e-mail, com remetente neutro." },
+      { k: ["discreta","embalagem","privacidade","fatura","nota"], a: "Padrão da casa: caixa sem logotipo e descritor de fatura “atelier têxtil”. Ninguém precisa saber o que chegou." },
+      { k: ["troca","devol","arrepend"], a: "30 dias. Se o caimento falhar, a segunda via sai com prioridade. Peças com etiqueta e sem uso." },
+      { k: ["seda","tecido","renda","lavar","cuidado"], a: "Seda 19 momme e renda tipo Chantilly. Lavagem delicada, à mão, água fria; secar à sombra. A seda vive anos se tratada assim." },
+      { k: ["pix","pagar","cartao","parcela","preço"], a: "Pix, cartão e 3x sem juros. Checkout em uma etapa — no protótipo ele é simulado." },
+      { k: ["whats","humano","atendente","stylist"], a: "Posso seguir daqui ou te passar para uma stylist no WhatsApp em horário comercial (seg–sex, 10h–18h). Quer o link?" },
+      { k: ["colec","aurora","núpcia","nupcia","noite","pele"], a: "Quatro linguagens: Seda Nua, Renda, Noite e Segunda Pele — mais a edição Núpcias. Posso abrir a loja na coleção que você quiser." }
+    ];
+    const ojasQuick = [
+      ["Medidas e caimento", "Como escolher o tamanho?"],
+      ["Embalagem discreta", "A embalagem é discreta?"],
+      ["Frete", "Como funciona o frete?"],
+      ["Trocas", "Qual a política de troca?"]
+    ];
+
+    function ojasPush(who, text) {
+      const el = document.createElement("div");
+      el.className = "ojas-msg " + who;
+      el.innerHTML = text;
+      const box = document.getElementById("ojasThread");
+      box.appendChild(el);
+      box.scrollTop = box.scrollHeight;
+    }
+    function ojasReply(q) {
+      const s = q.toLowerCase();
+      const hit = ojasKb.find(row => row.k.some(k => s.includes(k)));
+      if (/núpcia|nupcia/.test(s)) { setTimeout(() => filterProducts("nupcias"), 400); }
+      if (/segunda pele|invis/.test(s)) { setTimeout(() => filterProducts("pele"), 400); }
+      if (/renda/.test(s) && !/lavar|tecido/.test(s)) { setTimeout(() => filterProducts("renda"), 400); }
+      return hit ? hit.a : "Posso ajudar com medidas, frete, embalagem discreta, tecidos e trocas. Se preferir uma pessoa, a stylist atende no WhatsApp em horário comercial.";
+    }
+    function ojasAsk(text) {
+      ojasPush("me", text);
+      setTimeout(() => ojasPush("bot", ojasReply(text)), 380);
+    }
+    function openOjas() {
+      document.getElementById("ojasPanel").classList.add("open");
+      const th = document.getElementById("ojasThread");
+      if (!th.dataset.hi) {
+        ojasPush("bot", "Olá. Sou o <em>Ôjas Bot</em> do atelier — dúvidas de caimento, envio e peças. Sem pressão.");
+        th.dataset.hi = "1";
+      }
+      document.getElementById("ojasInput").focus();
+    }
+    function closeOjas() { document.getElementById("ojasPanel").classList.remove("open"); }
+
+    document.getElementById("ojasBtn").addEventListener("click", () => {
+      const panel = document.getElementById("ojasPanel");
+      panel.classList.contains("open") ? closeOjas() : openOjas();
+    });
+    document.getElementById("ojasClose").addEventListener("click", closeOjas);
+    document.getElementById("ojasQuick").innerHTML = ojasQuick.map(([l,q]) =>
+      `<button type="button" data-q="${q}">${l}</button>`
+    ).join("");
+    document.getElementById("ojasQuick").addEventListener("click", e => {
+      if (e.target.dataset.q) ojasAsk(e.target.dataset.q);
+    });
+    document.getElementById("ojasForm").addEventListener("submit", e => {
+      e.preventDefault();
+      const input = document.getElementById("ojasInput");
+      const v = input.value.trim();
+      if (!v) return;
+      input.value = "";
+      ojasAsk(v);
+    });
+
+    renderGrid(); persist();
+  </script>
+</body>
+</html>
